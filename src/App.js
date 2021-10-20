@@ -1,33 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
 
-function Person (props){
-  return (<div>
-    <hi>Имя {props.name}</hi>
-    <hi>Возраст {props.age}</hi>
-  </div>);
-  }
-  
-  function Hi (){
-    return (<div>
-      <Person name="Илья" age="27"/>
-      <Person name="Иван" age="37"/>
-      <Person name="Федор" age="17"/>
-    </div>
-    );
-    }
+import MainComp from './mainComponent';
+import LeftPanel from './LeftPanel';
 
-  function MyButton(props){
+ function MyButton(props){
       return(<div>
-        <button class="button">{props.name} </button>
+        <button className="button" onClick={props.onClick}>{props.name} </button>
         </div>
       );
   }
+  function press(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.responseType='json';
+    xhttp.open("GET", "http://localhost:8080/Backend/servlet", true);
+    xhttp.onload = function() {
+      if (xhttp.readyState === 4)  { 
+        var jsonResponse = xhttp.response;
+        alert(jsonResponse);
+        console.log('response', this.response);
+      }
+    };
+    xhttp.send();
+  }
+ function pressReg()
+ {
+
+ }
 
   function LoginButton(){
     return(<div>
-      <MyButton name="Войти"/>
-      <MyButton name="Регистрация"/>
+      <MyButton name="Войти" onClick={press}/>
+      <MyButton name="Регистрация" onClick={pressReg}/>
+      
       </div>
     );
   }
@@ -47,27 +52,73 @@ function Person (props){
 
   function LoginInput(){
     return (<div>
+      
       <MyInput/>
       </div>
     );
   }
 
+  var style = {
+    backgroundColor: "#F8F8F8",
+    borderTop: "1px solid #E7E7E7",
+    textAlign: "center",
+    padding: "20px",
+    position: "fixed",
+    left: "0",
+    bottom: "0",
+    height: "40px",
+    width: "100%",
+}
+
+var phantom = {
+  display: 'block',
+  padding: '20px',
+  height: '60px',
+  width: '100%',
+}
+
+var styleLogin={
+
+  
+  width:'400px',
+  marginLeft:'auto',
+  marginRight:'auto',
+  padding: '5% 0',
+}
+
+function LoginForm(){
+    return(
+      <div style={styleLogin}>
+        <><LoginInput /><LoginButton /></>
+      </div>
+    );
+
+}
+
+
+function Footer({ children }) {
+    return (
+        <div>
+            <div style={phantom} />
+            <div style={style}>
+                { children }
+            </div>
+        </div>
+    )
+}
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1><Hi/></h1>
-      </header>
-        <div >
-         <LoginInput/>
-         <LoginButton/>
-        </div>
+      <MainComp/>
+      <LeftPanel/>
+        
+
         <div>
-          <footer>
-            <h2>Footer</h2>
-          </footer>
+          <Footer>
+            
+          </Footer>
           </div>
     </div>
   );
