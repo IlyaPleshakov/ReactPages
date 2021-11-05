@@ -4,8 +4,25 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import EnteringForm from './enteringForm';
+import OrdersForm from './OrdersForm';
 
+var buttonStyle={
+
+  backgroundColor: '#3b3e5fe8',
+  border: 'none',
+  color: '#ffffff',
+  padding: '15px 22px',
+  textAlign: 'center',
+  fontSize: 'medium',
+  marginTop: '10px',
+  opacity: '0.6',
+  transition: '0.3s',
+  display: 'inline-block',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  width: '100%',
+  borderRadius: '5px'
+}
 
 
 function MyButton(props){
@@ -27,7 +44,6 @@ function pressReg()
       <MyButton name="etc" onClick={pressReg}/>
       <MyButton name="etc" onClick={pressReg}/>
       <MyButton name="etc" onClick={pressReg}/>
-      <MyButton name="etc" onClick={pressReg}/>
       </div>
     );
   }
@@ -41,7 +57,7 @@ export default class LeftPanel extends React.Component{
                 
             </Col>
             <Col sm={9}>
-                <EnteringForm/>
+                <OrdersForm/>
                 </Col>
         </Row>
         </Container>
