@@ -71,13 +71,22 @@ function CreateTable(arr){
 
 const num=[1,2,3,4,5];
 
-function ProductList(props) {
+function Product(){
+    const products = getProducts();
+    var element=products[0];
+    return(
+        <div>
+            <h1>{element.id}</h1>
+            
+        </div>
+    );
+}
 
-  const products = getProducts();
-  const listItems = products.array.forEach(element => {
-    alert(element.id);
-  });
-  return(<div>{listItems}</div>);
+function ProductList() {
+
+  
+  
+  return(<div><Product/></div>);
 }
 
 function getProducts(){
@@ -87,6 +96,7 @@ function getProducts(){
     request.onload = function() {
       if (request.readyState === 4)  { 
         console.log('response', this.response);
+        return this.response;
       }
     };     
     request.send();
