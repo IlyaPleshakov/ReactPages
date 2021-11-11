@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import MainComp from './mainComponent';
-import LeftPanel from './LeftPanel';
+import MainPage from './MainPage';
 
  function MyButton(props){
       return(<div>
@@ -23,16 +23,12 @@ import LeftPanel from './LeftPanel';
     };
     xhttp.send();
   }
- function pressReg()
- {
 
- }
 
   function LoginButton(){
     return(<div>
-      <MyButton name="Войти" onClick={press}/>
-      <MyButton name="Регистрация" onClick={pressReg}/>
-      
+      <MyButton name="Войти"/>
+      <MyButton name="Регистрация"/>
       </div>
     );
   }
@@ -112,13 +108,9 @@ function App() {
   return (
     <div className="App">
       <MainComp/>
-      <LeftPanel/>
-        
-
-        <div>
-          <Footer>
-            
-          </Footer>
+      <MainPage/>
+          <div>
+          <Footer/>
           </div>
     </div>
   );

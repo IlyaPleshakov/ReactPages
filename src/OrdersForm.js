@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import OrdersTable from './OrdersTable';
 
 var buttonStyle={
 
@@ -23,21 +22,11 @@ var buttonStyle={
   borderRadius: '5px'
 }
 
-var product={
-order:"",    
-name:"",
-price:0,
-quantity:0
-}
-
-
-
-
 function OrdersForm()
 {
     return (
-    <div style={{marginTop:'60px'}} >
-                <Form>
+    <div style={{marginTop:'10px'}} >
+        <Form>
         <Row className="mb 3">            
         <Form.Group as={Col} controlId="">
             <Form.Label>Номер</Form.Label>
@@ -54,24 +43,9 @@ function OrdersForm()
             <Form.Control/>
             <Button style={buttonStyle}>Удалить</Button>
         </Form.Group>
-        <Form.Group as={Col} controlId="">
-            <Form.Label>etc</Form.Label>
-            <Form.Control/>
-        </Form.Group>
-        <Form.Group as={Col} controlId="">
-            <Form.Label>etc</Form.Label>
-            <Form.Control/>
-        </Form.Group>
-        <Form.Group as={Col} controlId="">
-            <Form.Label>etc</Form.Label>
-            <Form.Control/>
-        </Form.Group>
-        
         </Row>
-
         </Form>
-
-        <OrdersTable />
+        
 </div>
     );
 }
