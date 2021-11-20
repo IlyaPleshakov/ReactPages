@@ -20,8 +20,7 @@ export default class LoginForm extends React.Component {
             username: 'admin',
             password: 'admin'
         }
-        this.my='';
-
+   
     }
     handleSubmit(event) {
         event.preventDefault()
@@ -33,19 +32,15 @@ export default class LoginForm extends React.Component {
         return fetch(url,{
             method: 'POST',
             headers: {
-                'Content-Type': 'text/plain;charset=UTF-8',
+                'Content-Type': 'application/json',
                 'application':'x-www-form-urlencoded',
-                'X-Content-Type-Options':'nosniff',
-                'X-XSS-Protection':'1; mode=block',
-                'Cache-Control':'no-cache, no-store, max-age=0, must-revalidate',
-                'Pragma':'no-cache',
-                'Keep-Alive':'timeout=60',
-                'Connection':'keep-alive',
-                'Origin':'http://localhost:3000/'
+                'Access-Control-Origin': '*',
+                'credentials': 'include'
               },
-              body: JSON.stringify(this.state),
-              credentials: 'include',
-              referrerPolicy: 'no-referrer'
+              body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password
+             })
         }).then((res) => {
             res.json()})
             .catch(err => {
